@@ -1,7 +1,14 @@
+const timerIntervals = process.argv.slice(2).filter(val => val > 0).filter(time => !isNaN(time));
 
-const timers = process.argv.slice(2);
-for (let j in timers) {
-  setTimeout(() => {
-    process.stdout.write(`\x07${timers[j]}\n`);
-  }, timers[j] * 1000);
+let timer = () => {
+  if (timerIntervals === '') {
+    return;
+  }
+  for (let j in timerIntervals) {
+    setTimeout(() => {
+      process.stdout.write(`\x07${timerIntervals[j]}\n`);
+    }, timerIntervals[j] * 1000);
+  }
 };
+
+timer();
